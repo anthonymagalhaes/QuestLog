@@ -8,6 +8,9 @@ namespace QuestLog.Services
 {
     public interface ITokenService
     {
-        string GenerateToken(User user);
+        Task<string> GenerateToken(User user);
+        Task<string> GenerateResetToken(User user);
+
+        Task<int?> ValidateAndConsumeToken(string token);
     }
 }

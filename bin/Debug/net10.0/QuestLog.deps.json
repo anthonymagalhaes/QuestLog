@@ -9,10 +9,12 @@
       "QuestLog/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.1.0",
+          "MailKit": "4.16.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.13",
           "Microsoft.AspNetCore.OpenApi": "9.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.7",
           "Pomelo.EntityFrameworkCore.MySql": "9.0.0",
           "Scalar.AspNetCore": "2.13.11",
           "System.IdentityModel.Tokens.Jwt": "8.0.1"
@@ -29,11 +31,30 @@
           }
         }
       },
+      "BouncyCastle.Cryptography/2.6.2": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.2.46322"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "MailKit/4.16.0": {
+        "dependencies": {
+          "MimeKit": "4.16.0"
+        },
+        "runtime": {
+          "lib/net10.0/MailKit.dll": {
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
           }
         }
       },
@@ -391,6 +412,17 @@
           }
         }
       },
+      "Microsoft.Extensions.Caching.StackExchangeRedis/10.0.7": {
+        "dependencies": {
+          "StackExchange.Redis": "2.7.27"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
+            "assemblyVersion": "10.0.7.0",
+            "fileVersion": "10.0.726.21808"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyModel/9.0.0": {
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -471,6 +503,17 @@
           }
         }
       },
+      "MimeKit/4.16.0": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.6.2"
+        },
+        "runtime": {
+          "lib/net10.0/MimeKit.dll": {
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
+          }
+        }
+      },
       "Mono.TextTemplating/3.0.0": {
         "dependencies": {
           "System.CodeDom": "6.0.0"
@@ -487,6 +530,14 @@
           "lib/net9.0/MySqlConnector.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.4.0.0"
+          }
+        }
+      },
+      "Pipelines.Sockets.Unofficial/2.2.8": {
+        "runtime": {
+          "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.2.8.1080"
           }
         }
       },
@@ -507,6 +558,17 @@
           "lib/net10.0/Scalar.AspNetCore.dll": {
             "assemblyVersion": "2.13.11.0",
             "fileVersion": "2.13.11.0"
+          }
+        }
+      },
+      "StackExchange.Redis/2.7.27": {
+        "dependencies": {
+          "Pipelines.Sockets.Unofficial": "2.2.8"
+        },
+        "runtime": {
+          "lib/net6.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.7.27.49176"
           }
         }
       },
@@ -605,12 +667,26 @@
       "path": "bcrypt.net-next/4.1.0",
       "hashPath": "bcrypt.net-next.4.1.0.nupkg.sha512"
     },
+    "BouncyCastle.Cryptography/2.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "hashPath": "bouncycastle.cryptography.2.6.2.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "MailKit/4.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-trJ82DOpAmo8i1jO1vNE+dGn4mPRyeYfy4swRcAGgMJhPoI1Kohf4OFJJf0+YIj4iUxgxPn8W+ht7e7KiYzSjg==",
+      "path": "mailkit/4.16.0",
+      "hashPath": "mailkit.4.16.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.13": {
       "type": "package",
@@ -703,6 +779,13 @@
       "path": "microsoft.entityframeworkcore.relational/9.0.0",
       "hashPath": "microsoft.entityframeworkcore.relational.9.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Caching.StackExchangeRedis/10.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TvD0totA8qeyrZ2YeY/qRNgYBy4BvO6dG59ziJDLVnLH4s2jeLUFEFcgA3xzqPhCMMbuz9bJTRwHxkZ/7c87jQ==",
+      "path": "microsoft.extensions.caching.stackexchangeredis/10.0.7",
+      "hashPath": "microsoft.extensions.caching.stackexchangeredis.10.0.7.nupkg.sha512"
+    },
     "Microsoft.Extensions.DependencyModel/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -759,6 +842,13 @@
       "path": "microsoft.openapi/1.6.17",
       "hashPath": "microsoft.openapi.1.6.17.nupkg.sha512"
     },
+    "MimeKit/4.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X0LFxeM4gPRIhODyY/HYS9b+zRZ7y//v59rFzgS6wLxcPuZThnMtNZHtrr0fjLyRRkg3gqJBtvW36XfUzZ7Djw==",
+      "path": "mimekit/4.16.0",
+      "hashPath": "mimekit.4.16.0.nupkg.sha512"
+    },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",
       "serviceable": true,
@@ -773,6 +863,13 @@
       "path": "mysqlconnector/2.4.0",
       "hashPath": "mysqlconnector.2.4.0.nupkg.sha512"
     },
+    "Pipelines.Sockets.Unofficial/2.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
+      "path": "pipelines.sockets.unofficial/2.2.8",
+      "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
+    },
     "Pomelo.EntityFrameworkCore.MySql/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -786,6 +883,13 @@
       "sha512": "sha512-bH99KIEEaYhC+mMM9011OJtou0y/9O2NXo6h9/k104sAniMzFSGKNaiIX6NRkxc487MJD8vYu3I3nJtW/nU/3g==",
       "path": "scalar.aspnetcore/2.13.11",
       "hashPath": "scalar.aspnetcore.2.13.11.nupkg.sha512"
+    },
+    "StackExchange.Redis/2.7.27": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Uqc2OQHglqj9/FfGQ6RkKFkZfHySfZlfmbCl+hc+u2I/IqunfelQ7QJi7ZhvAJxUtu80pildVX6NPLdDaUffOw==",
+      "path": "stackexchange.redis/2.7.27",
+      "hashPath": "stackexchange.redis.2.7.27.nupkg.sha512"
     },
     "System.CodeDom/6.0.0": {
       "type": "package",
