@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using QuestLog.Model;
-using QuestLog.DTOs.Noticia;
-using QuestLog.Services.Noticia;
 using QuestLog.Dto.UserDto;
+using QuestLog.DTOs.Noticia;
+using QuestLog.Model;
+using QuestLog.Services.Noticia;
 
 namespace QuestLog.controllers
 {
@@ -45,6 +46,7 @@ namespace QuestLog.controllers
        }
 
         [HttpPost("create")]
+        [Authorize]
         public async Task<IActionResult> CreateNoticia([FromBody] NoticiaRequestDto dto)
         {
             try
@@ -52,7 +54,7 @@ namespace QuestLog.controllers
                 var noticia = await _service.Create(dto);
                 if (noticia == null)
                 {
-                    return NotFound(new { message = "Erro ao Criar Noticia"});
+                    return BadRequest(new { message = "Erro ao Criar Noticia"});
                 }
                 return Created($"noticia/getbyid/{noticia.Id}", noticia);
             }
@@ -61,8 +63,9 @@ namespace QuestLog.controllers
                 return BadRequest(new { message = "Erro ao Criar", error = err.Message });
             }
         }
-        
+
         [HttpPut("edit/{id}")]
+        [Authorize]
         public async Task<IActionResult> EditNoticia([FromBody] NoticiaRequestDto dto,[FromRoute] int id)
         {
             try
@@ -70,7 +73,7 @@ namespace QuestLog.controllers
                 var noticia = await _service.Edit(dto,id);
                 if (noticia == null)
                 {
-                    return NotFound(new { message = "Erro ao Editar Noticia"});
+                    return BadRequest(new { message = "Erro ao Editar Noticia"});
                 }
                 return Created($"noticia/getbyid/{noticia.Id}", noticia);
             }
@@ -81,6 +84,7 @@ namespace QuestLog.controllers
         }
 
         [HttpDelete("delete/{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteNoticia([FromRoute] int id)
         {
             try
@@ -88,7 +92,7 @@ namespace QuestLog.controllers
                 var noticia = await _service.Delete(id);
                 if(noticia == null)
                 {
-                    return NotFound(new { message = "Erro ao Deletar Noticia"});
+                    return BadRequest(new { message = "Erro ao Deletar Noticia"});
                 }
                 return Ok(noticia);
             }catch(Exception err)

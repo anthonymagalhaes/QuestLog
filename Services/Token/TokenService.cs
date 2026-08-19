@@ -16,7 +16,7 @@ namespace QuestLog.Services
     {
         private readonly IDistributedCache _cache;
         private readonly IConfiguration _configuration;
-        public TokenService(IConfiguration configuration,IDistributedCache cache)
+        public TokenService(IConfiguration configuration, IDistributedCache cache)
         {
             _configuration = configuration;
             _cache = cache;
@@ -26,7 +26,7 @@ namespace QuestLog.Services
         {
             var handler = new JwtSecurityTokenHandler();
 
-            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
 
             var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
             SecurityAlgorithms.HmacSha256Signature);
@@ -36,6 +36,8 @@ namespace QuestLog.Services
                 Subject = GenerateClaims(user),
                 SigningCredentials = signingCredentials,
                 Expires = DateTime.UtcNow.AddHours(2),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"]
             };
             var token = handler.CreateToken(tokenDescriptor);
 
@@ -53,9 +55,10 @@ namespace QuestLog.Services
             return token;
         }
 
-         private static ClaimsIdentity GenerateClaims(User user)
+        private static ClaimsIdentity GenerateClaims(User user)
         {
             var ci = new ClaimsIdentity();
+            ci.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             ci.AddClaim(
             new Claim(ClaimTypes.Name, value: user.Nome));
             foreach (var role in user.Roles)
